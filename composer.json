@@ -3,7 +3,7 @@
     "description": "n",
     "autoload": {
         "psr-4": {
-            "Andre\\ListarClientes\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
