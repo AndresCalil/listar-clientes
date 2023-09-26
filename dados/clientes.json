@@ -1,0 +1,8 @@
+[
+    {"id": 1, "nome":"João", "cpf":"123"},
+    {"id": 2, "nome":"José", "cpf":"456"},
+    {"id": 3, "nome":"Andres", "cpf":"789"},
+    {"id": 4, "nome":"Icaro", "cpf":"101"},
+    {"id": 5, "nome":"Amanda", "cpf":"121"},
+    {"id": 6, "nome":"Miguel", "cpf":"314"}
+]
