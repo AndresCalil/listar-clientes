@@ -1,0 +1,389 @@
+@charset "utf-8";
+a {text-decoration: none;}@charset "utf-8";
+a:hover{	filter: brightness(120%);}
+
+html, body {height:100%;}
+body {
+	color: #000;
+	font-family: 'Arial';
+	padding: 0;
+	margin: 0;
+	background-image:url(img/wallpaper.jpg);
+	background-size:cover;
+	background-attachment:fixed;
+	background-position:bottom;
+}
+.clarea {
+	cursor:pointer;	
+}
+.clarea:hover{	filter: brightness(120%);}
+.tudo {
+    min-height:100%;
+    position:relative;
+}
+.excel {
+	background-image:url(img/excel.png);
+	width:60px;
+	height:50px;
+	position:fixed;
+	bottom:3px;
+	right:3px;
+	cursor:pointer;
+	z-index:1000;
+}
+.excel:hover {opacity:0.7}
+.menusup {
+	background-color:#333;
+	color:#fff;
+	height:50px;
+}
+.logadocomo {
+	position:absolute;
+	right:4px;
+	top:4px;
+	color:#fff;
+	text-align:right;
+	font-size:8pt;
+	
+}
+.ck {
+	display:inline-block;
+	margin-right:5px;
+	vertical-align:middle;
+}
+.areacpt {
+	display:inline-block;
+	margin-right:5px;
+	vertical-align:top;
+	border:solid 1px #CCC;
+	padding:3px;
+	border-radius:3px;
+	width:30%;
+}
+.logadocomo a:link{
+	color: #FC3;
+}
+.logadocomo a:visited{color:#FC3;}
+.logadocomo a:hover{color:#FC3; text-decoration:underline;}
+.menuesquerda {
+	background-color: #11111180;
+	box-shadow:1px 2px 2px #000 inset;
+	}
+.menuesquerda a:hover{	color: #2c3331;}
+.menuesquerda a:link{	color: #2c3331;}
+.menuesquerda a:visited{color:#2c3331;}
+
+.menuitem {
+	background-color: #11111150;
+	font-size: 10pt;
+	padding: 5px;
+	padding-left:12px;
+	border-bottom: solid 2px #2c3331;
+	cursor: pointer;
+	color: #fff;
+}
+.menuitem:hover {background-color:#2c333180; color:#fff;}
+.menuitem a:hover{	color: #fff;}
+.menuitem a:link{	color: #fff;}
+.menuitem a:visited{color:#fff;}
+.box {
+margin:3px;
+background-color:#111111;
+border-radius:  5px ;
+padding:3px;
+color:#fff;	
+box-shadow:1px 1px 2px #000;
+  box-sizing: border-box;
+}
+.box a:hover{
+	color: #FEFEEB;
+}
+.box a:link{	color: #FEFEEB;}
+.box a:visited{color:#FEFEEB;}
+
+
+.linha {
+	font-size:10pt;
+	color:#111111;
+	padding:2px;
+	background-color: #EEE;
+}
+.linha a:hover{	color: #333; text-decoration:underline;}
+.linha a:link{	color: #333;}
+.linha a:visited{color:#333; text-decoration:underline;}
+
+.linha:nth-child(odd)		{
+	background-color: #FFF;
+}
+.linha:nth-child(even)		{
+	background-color: #EEE;
+}
+
+.linhahover {
+	cursor:pointer;
+}
+.linhahover:hover {
+	background-color: #FF6;
+	
+}
+
+.linhazul {
+	font-size:9pt;
+	color:#111111;
+	padding:2px;
+	background-color: #EEE;
+}
+.linhazul a:hover{	color: #333; text-decoration:underline;}
+.linhazul a:link{	color: #333;}
+.linhazul a:visited{color:#333; text-decoration:underline;}
+
+.linhazul:nth-child(odd)		{
+	background-color: #D0F4F4;
+}
+.linhazul:nth-child(even)		{
+	background-color: #ABEBEB;
+}
+
+.linhared {
+	font-size:13pt;
+	color:#FF0;
+	padding:2px;
+	background-color: #FCC;
+}
+.linhared a:hover{
+	color: #FFF;
+	text-decoration: underline;
+}
+.linhared a:link{	color: #FFF;}
+.linhared a:visited{color:#FFF; text-decoration:underline;}
+
+.linhared:nth-child(odd)		{
+	background-color: #FF5757;
+}
+.linhared:nth-child(even)		{
+	background-color: #FF2B2B;
+}
+
+
+.botao {
+	display:inline-block;
+user-select: none;
+cursor: pointer; 
+color:#fff;
+background-color:#111111;
+font-size:10pt;
+padding-bottom:2px;
+padding-top:3px;
+padding-left:5px;
+padding-right:5px;
+border-radius:3px ;
+	box-shadow:1px 1px 2px #000;
+border:none;
+margin:2px;
+}
+.botao:hover {
+	filter: brightness(120%);
+	}
+.botao a:hover{	color: #fff;}
+.botao a:link{	color: #fff;}
+.botao a:visited{color:#fff;}
+
+.botaog {
+	display:inline-block;
+user-select: none;
+cursor: pointer; 
+color:#fff;
+background-color:#777777;
+font-size:10pt;
+padding-bottom:2px;
+padding-top:3px;
+padding-left:5px;
+padding-right:5px;
+border-radius:3px ;
+	box-shadow:1px 1px 2px #000;
+border:none;
+}
+.botaog:hover {
+	filter: brightness(120%);
+	}
+.botaog a:hover{	color: #fff;}
+.botaog a:link{	color: #fff;}
+.botaog a:visited{color:#fff;}
+
+
+
+
+.minibt {
+	display:inline-block;
+user-select: none;
+cursor: pointer; 
+color:#fff;
+background-color:#F00;
+font-size:8pt;
+padding-bottom:1px;
+padding-top:1px;
+padding-left:2px;
+padding-right:2px;
+border-radius:3px ;
+box-shadow:1px 1px 2px #000;
+border:none;
+margin:2px;
+position:relative;
+top:-3px;
+	
+}
+.minibt:hover {
+	filter: brightness(120%);
+	}
+	
+.gray {
+	background-color: #707070;	
+}
+.green {
+	background-color:#3C6;
+}
+.red {
+	background-color:#F66;
+}
+.red:nth-child(odd)		{
+	background-color: #F66;
+}
+.red:nth-child(even)		{
+	background-color: #F66;
+}
+
+.blue {
+	background-color:#69F;
+}
+
+.tgreen {
+	color: #29A752;
+}
+.tred {
+	color: #FF1313;
+}
+.tblue {
+	color: #0AA2FC;
+}
+.tgray {
+	color: #707070;	
+}
+
+.btck {
+	cursor: pointer; 
+background-color:#000000;
+border-radius:20px;
+
+	
+}
+.btck:hover {
+	filter: brightness(110%);
+	}
+.Formulario {
+color:#111111;
+background-color:#fff;
+font-size:11pt;
+padding-bottom:2px;
+padding-top:2px;
+padding-left:4px;
+padding-right:4px;
+border-radius:3px ;
+border:none;
+box-shadow: 1px 1px 1px #666 inset;
+	
+}
+.painel {
+	box-shadow:1px 4px 3px #000 inset;
+}
+
+
+
+
+.zero {
+	position:absolute;
+	bottom:0px;
+	overflow:hidden;
+	left:0px;
+	z-index:1000;
+	font-size:150%;
+	 user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+}
+.menos2 {
+	position:relative;
+	top:3px;
+	display:inline-block;
+	
+}
+.socel {
+	display:none;
+}
+
+.aparece {
+  animation: opacidade 0.5s ;
+		opacity:1;
+}
+
+@keyframes opacidade {
+	0% {
+			opacity:0;
+		
+	}
+  100% {
+			opacity:1;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+.socel {
+	display:block;
+}
+.semcel {
+	display:none;
+	
+}
+
+.menuesquerda {
+	display:none;
+	background-color: rgba(0,0,51,0.9);
+	color:#fff;
+}
+.vemmenu {
+	display:block;
+	width:100%;
+		animation-name: desliza;
+  animation-duration: 0.5s;
+		left:0px;
+		position:absolute;
+}
+		@keyframes desliza {
+from {
+		left:-400px;
+}
+  to {
+		left:0px;
+}
+}
+
+}
+@media print {
+  .no-print {
+    display: none;
+  }
+		body {
+			background-image:none;
+		}
+		.botao {
+			display:none;
+		}
+		.excel {
+			display:none;
+		}
+    .minibt {
+      display: none;
+    }
+}
+
