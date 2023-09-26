@@ -1,0 +1,16 @@
+{
+    "name": "andre/listar-clientes",
+    "description": "n",
+    "autoload": {
+        "psr-4": {
+            "Andre\\ListarClientes\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andres",
+            "email": "andrescalil@gmail.com"
+        }
+    ],
+    "require": {}
+}
