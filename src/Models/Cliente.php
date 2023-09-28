@@ -4,72 +4,59 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use PDO;
+use App\Models\Executar;
+use App\Models\Util;
 
+//CLASSE QUE CONTROLA A TABELA CLIENTE
 class Cliente
 {
-    
-	private $host = 'localhost';
-    private $usuario = 'andres';
-    private $senha = 'cadeoandres1';
-    private $banco = 'lista-clientes';
+    private $executar;
+    private $util;
 
-    private $con;
-				
-	public function __construct()
-    	{
-            $this->con = new PDO("mysql:host={$this->host};dbname={$this->banco}", $this->usuario, $this->senha);
-            $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    	}
-
-    public function getClientes(string $nome = NULL)
-    	{
-        	$sql = "SELECT * FROM clientes";
-        	$params = [];
-
-        if ($nome !== NULL) {
-            $sql .= " WHERE CONVERT(nome USING utf8) COLLATE utf8_general_ci LIKE :nome";
-            $params[':nome'] = "%" . $nome . "%";
-        }
-
-    $sql .= " ORDER BY nome";
-
-    $stmt = $this->con->prepare($sql);
-
-    foreach ($params as $param => $value)
-        {
-            $stmt->bindValue($param, $value, PDO::PARAM_STR);
-        }
-
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-	}
-				
-	public function addClientes(string $nome, string $cpf)
+    public function __construct()
     {
-        $sql = "INSERT INTO clientes (nome, cpf) VALUES (:nome, :cpf)";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-        return $stmt->execute();
+    $this->executar = new Executar();
+    $this->util = new Util();
     }
 
+    //LISTA O CONTEÚDO DA TABELA, SE HOUVER PARÂMETRO, FILTRA O NOME.
+    public function getClientes(string $nome = null)
+    {
+        $sql = "SELECT * FROM clientes";
+
+        if ($nome !== null) {
+            $sql .= " WHERE CONVERT(nome USING utf8) COLLATE utf8_general_ci LIKE '%" . $nome . "%' ";
+        }
+
+        $sql .= " ORDER BY nome";
+
+        return $this->executar->executarConsulta($sql);
+    }
+
+    //ADICIONA REGISTROS NA TABELA CLIENTE
+    public function addClientes(string $nome, string $cpf)
+    {
+        $nome = $this->util->limpaString($nome);
+        $cpf = $this->util->formataCpf($cpf);
+        
+        $sql = "INSERT INTO clientes (nome, cpf) VALUES ('".$nome."', '".$cpf."')";
+
+        return $this->executar->executarConsulta($sql);
+    }
+
+    //REALIZA UPDATES (PS: NÃO CRIEI ISSO NA INDEX POR PREGUIÇA)
     public function updateClientes(int $id, string $nome, string $cpf)
     {
-        $sql = "UPDATE clientes SET nome = :nome, cpf = :cpf WHERE id = :id";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-        return $stmt->execute();
+        $sql = "UPDATE clientes SET nome = '".$nome."', cpf = '".$cpf."' WHERE id = ".$id;
+
+        return $this->executar->executarConsulta($sql);
     }
 
+    //APAGA A GALERA
     public function deleteClientes(int $id)
     {
-        $sql = "DELETE FROM clientes WHERE id = :id";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
+        $sql = "DELETE FROM clientes WHERE id = ".$id;
+
+        return $this->executar->executarConsulta($sql);
     }
-				
 }
