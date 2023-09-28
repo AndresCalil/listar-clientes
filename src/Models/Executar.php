@@ -10,10 +10,10 @@ use PDOException;
 class Executar
 {
     //VARIÁVEIS DO BANCO QUE DEVERIAM SER ESCONDIDAS =P
-    private $host = 'localhost';
-    private $usuario = 'andres';
-    private $senha = 'cadeoandres1';
-    private $banco = 'lista-clientes';
+    private $host = '162.241.62.70';
+    private $usuario = 'cadas558_jobs';
+    private $senha = 'Jobs!#2536';
+    private $banco = 'cadas558_lista-clientes';
 
     private $con;
 
