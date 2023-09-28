@@ -24,7 +24,8 @@ class Cliente
     {
         $sql = "SELECT * FROM clientes";
 
-        if ($nome !== null) {
+        if ($nome !== null) 
+        {
             $sql .= " WHERE CONVERT(nome USING utf8) COLLATE utf8_general_ci LIKE '%" . $nome . "%' ";
         }
 
@@ -38,7 +39,7 @@ class Cliente
     {
         $nome = $this->util->limpaString($nome);
         $cpf = $this->util->formataCpf($cpf);
-        
+
         $sql = "INSERT INTO clientes (nome, cpf) VALUES ('".$nome."', '".$cpf."')";
 
         return $this->executar->executarConsulta($sql);

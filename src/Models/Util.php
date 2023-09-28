@@ -10,8 +10,7 @@ class Util
     //NZ = NULO VIRA ZERO
     public function nz($v)
     {
-        if ($v!="")
-        {
+        if ($v!="") {
             return $v;
         } else {
             return 0;
@@ -28,23 +27,21 @@ class Util
         $v = str_replace('$', '', $v);
         $v = str_replace('%', '', $v);
         $v = str_replace('*', '', $v);
-        $v = str_replace("'", '', $v);
+        $v = str_replace("'", '´', $v);
         $v = str_replace('"', '', $v);
-        $v = mb_strtoupper(rtrim($v));
+        $v = mb_strtoupper(trim($v));
         return $v;
     }
 
     //AUTO EXPLICATIVO:
     function formataTelefone($telefone) {
         //SE FOR TEL INTERNACIONAL, IGNORA FORMATAÇÃO
-        if (substr($telefone, 0, 1) == "+")
-        {
+        if (substr($telefone, 0, 1) == "+") {
             return $telefone;
         } else {
             $telefoneNumeros = preg_replace('/\D/', '', $telefone);
     
-            if (strlen($telefoneNumeros) === 11)
-            {
+            if (strlen($telefoneNumeros) === 11) {
                 $telefoneFormatado = '(' . substr($telefoneNumeros, 0, 2) . ') ' . substr($telefoneNumeros, 2, 5) . '-' . substr($telefoneNumeros, 7);
             } else {
                 $telefoneFormatado = $telefone;
