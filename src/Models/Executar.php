@@ -9,52 +9,47 @@ use PDOException;
 
 class Executar
 {
-    //VARIÁVEIS DO BANCO QUE DEVERIAM SER ESCONDIDAS =P
-    private $host = '162.241.62.70';
-    private $usuario = 'cadas558_jobs';
-    private $senha = 'Jobs!#2536';
-    private $banco = 'cadas558_lista-clientes';
+    private string $host = '162.241.62.70';
+    private string $usuario = 'cadas558_jobs';
+    private string $senha = 'Jobs!#2536';
+    private string $banco = 'cadas558_lista-clientes';
 
-    private $con;
+    private PDO $connection;
 
     public function __construct()
     {
-            $this->con = new PDO("mysql:host={$this->host};dbname={$this->banco}", $this->usuario, $this->senha);
-            $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->connection = new PDO("mysql:host={$this->host};dbname={$this->banco}", $this->usuario, $this->senha);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
-    //FUNÇÃO EXECUTA QUALQUER STRING SQL NO BANCO:
-    public function executarConsulta(string $sql, $params = [])
+    public function executarConsulta(string $sql, $params = []): bool|string|array
     {
-       try
-       {
-           $stmt = $this->con->prepare($sql);
+        try {
+            $stmt = $this->connection->prepare($sql);
 
             foreach ($params as $key => &$value) {
-            $stmt->bindParam($key, $value);
-        }
+                $stmt->bindParam($key, $value);
+            }
 
-        $stmt->execute();
+            $stmt->execute();
 
-        if (!$stmt) {
-            $erro = $this->con->errorInfo();
-            echo $sql . '<br><br>';
-            echo "Deu ruim: " . $erro[2];
-            return false;
-        }
+            if (!$stmt) {
+                $erro = $this->connection->errorInfo();
+                echo $sql . '<br><br>';
+                echo "Deu ruim: " . $erro[2];
+                return false;
+            }
 
-        //AQUI, SE A CONSULTA FOR INSERT, EU RETORNO O ID PARA FINS DE REGISTRO EM LOG E TALS
-        if (stripos($sql, 'INSERT') !== false) {
-            return $this->con->lastInsertId();
-        }
-        //CASO CONTRÁRIO, EU RETORNO A LISTA (SE FOR CONSULTA)
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) 
-        {
-            echo "Deu ruim: " . $e->getMessage();
+            if (str_contains($sql, 'INSERT')) {
+                return $this->connection->lastInsertId();
+            }
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            echo "Erro ao executar query no arquivo " . __CLASS__ . ", método " . __METHOD__ . ". Erro: {$exception->getMessage()}";
+
             return false;
         }
     }
-
 }

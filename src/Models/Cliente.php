@@ -7,25 +7,22 @@ namespace App\Models;
 use App\Models\Executar;
 use App\Models\Util;
 
-//CLASSE QUE CONTROLA A TABELA CLIENTE
 class Cliente
 {
-    private $executar;
-    private $util;
+    private Executar $executar;
+    private Util $util;
 
     public function __construct()
     {
-    $this->executar = new Executar();
-    $this->util = new Util();
+        $this->executar = new Executar();
+        $this->util = new Util();
     }
 
-    //LISTA O CONTEÚDO DA TABELA, SE HOUVER PARÂMETRO, FILTRA O NOME.
-    public function getClientes(string $nome = null)
+    public function getClientes(?string $nome = null): string|bool|array
     {
         $sql = "SELECT * FROM clientes";
 
-        if ($nome !== null) 
-        {
+        if ($nome !== null) {
             $sql .= " WHERE CONVERT(nome USING utf8) COLLATE utf8_general_ci LIKE '%" . $nome . "%' ";
         }
 
@@ -34,29 +31,26 @@ class Cliente
         return $this->executar->executarConsulta($sql);
     }
 
-    //ADICIONA REGISTROS NA TABELA CLIENTE
-    public function addClientes(string $nome, string $cpf)
+    public function addClientes(string $nome, string $cpf): string|bool|array
     {
         $nome = $this->util->limpaString($nome);
         $cpf = $this->util->formataCpf($cpf);
 
-        $sql = "INSERT INTO clientes (nome, cpf) VALUES ('".$nome."', '".$cpf."')";
+        $sql = "INSERT INTO clientes (nome, cpf) VALUES ('{$nome}', '{$cpf}')";
 
         return $this->executar->executarConsulta($sql);
     }
 
-    //REALIZA UPDATES (PS: NÃO CRIEI ISSO NA INDEX POR PREGUIÇA)
-    public function updateClientes(int $id, string $nome, string $cpf)
+    public function updateClientes(int $id, string $nome, string $cpf): string|bool|array
     {
-        $sql = "UPDATE clientes SET nome = '".$nome."', cpf = '".$cpf."' WHERE id = ".$id;
+        $sql = "UPDATE clientes SET nome = '" . $nome . "', cpf = '" . $cpf . "' WHERE id = " . $id;
 
         return $this->executar->executarConsulta($sql);
     }
 
-    //APAGA A GALERA
-    public function deleteClientes(int $id)
+    public function deleteClientes(int $id): string|bool|array
     {
-        $sql = "DELETE FROM clientes WHERE id = ".$id;
+        $sql = "DELETE FROM clientes WHERE id = " . $id;
 
         return $this->executar->executarConsulta($sql);
     }
