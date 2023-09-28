@@ -22,6 +22,7 @@ function checkRoute(Cliente $cliente): void
 }
 
 $cliente = new Cliente();
+
 checkRoute($cliente);
 
 $nome = $_GET["nome"] ?? null;
